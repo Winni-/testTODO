@@ -1,10 +1,27 @@
 import { types } from './types'
+import uuid from 'uuid/v4'
 
-let nextTodoId = 0
-export const addTodo = text => ({
+export const addTodo = ( title, task ) => ({
   type: types.ADD_TODO,
-  id: nextTodoId++,
-  text
+  payload: {
+    id: uuid(),
+    title,
+    task
+  }
+})
+export const editTodo = ( {id, title, task} ) => ({
+  type: types.EDIT_TASK,
+  payload: {
+    id,
+    title,
+    task
+  }
+})
+export const removeTodo = ( id ) => ({
+  type: types.REMOVE_TODO,
+  payload: {
+    id
+  }
 })
 
 export const setVisibilityFilter = filter => ({
@@ -14,7 +31,9 @@ export const setVisibilityFilter = filter => ({
 
 export const toggleTodo = id => ({
   type: types.TOGGLE_TODO,
-  id
+  payload: {
+    id
+  }
 })
 
 export const VisibilityFilters = {

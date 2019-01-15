@@ -1,17 +1,21 @@
+import {types} from '../actions/types';
 export const todos = (state = [], action) => {
   switch (action.type) {
-    case 'ADD_TODO':
+    case types.ADD_TODO:
       return [
         ...state,
         {
-          id: action.id,
-          text: action.text,
+          ...action.payload,
           completed: false
         }
-      ]
-    case 'TOGGLE_TODO':
+      ].sort((task1, task2)=>{
+        return -task1.title.localeCompare(task2.title);
+      })
+    case types.REMOVE_TODO:
+      return state.filter(todo => todo.id !== action.payload.id)
+    case types.TOGGLE_TODO:
       return state.map(todo =>
-        (todo.id === action.id)
+        (todo.id === action.payload.id)
           ? {...todo, completed: !todo.completed}
           : todo
       )
