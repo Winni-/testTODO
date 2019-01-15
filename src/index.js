@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import { App } from './components/App'
 import { rootReducer } from './reducers'
 import { loadField, saveField } from "./localStorage";
+import './style/base.css'
 
 const todos = loadField('todos')
 const savedState = {todos}

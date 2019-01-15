@@ -1,13 +1,19 @@
 import React from 'react'
-import { Footer } from './Footer'
+import { Filters } from './Filters'
 import { AddTodo } from '../components/AddTodo'
 import { VisibleTodoList } from '../containers/VisibleTodoList'
+import styled from 'styled-components'
 
 export const App = () => (
-  <div>
+  <Container>
     <AddTodo />
+    <Filters/>
     <VisibleTodoList />
-    <Footer />
-  </div>
+  </Container>
 )
+
+const Container = styled.div`
+  max-width: 600px;
+  margin: 10vh auto 0;
+`
 
