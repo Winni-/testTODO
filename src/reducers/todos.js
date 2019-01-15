@@ -19,6 +19,12 @@ export const todos = (state = [], action) => {
           ? {...todo, completed: !todo.completed}
           : todo
       )
+    case types.EDIT_TASK:
+      return state.map(todo =>
+        (todo.id === action.payload.id)
+          ? {...todo, ...action.payload}
+          : todo
+      )
     default:
       return state
   }

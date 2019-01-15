@@ -8,7 +8,7 @@ export const TodoList = ( {todos, toggleTodo, handleEdit, handleRemove} ) => (
       <Todo
         key={ todo.id }
         { ...todo }
-        handleEdit={ () => handleEdit(todo.id) }
+        handleEdit={ handleEdit(todo.id) }
         handleRemove={ () => handleRemove(todo.id) }
         handleComplete={ () => toggleTodo(todo.id) }
       />
